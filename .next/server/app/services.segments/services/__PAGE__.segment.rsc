@@ -1,7 +1,0 @@
-1:"$Sreact.fragment"
-2:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/c6249ad17bbcd983.js"],"OutletBoundary"]
-3:"$Sreact.suspense"
-:HL["https://images.unsplash.com/photo-1616422285623-13ff0162193c?q=80&w=731&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D","image"]
-:HL["/_next/static/chunks/6f7ad9061235b974.css","style"]
-0:{"buildId":"2ifmikwcFCKhIvp0R_v33","rsc":["$","$1","c",{"children":[["$","div",null,{"className":"PageHero-module__aE6RSq__page-hero-container ","style":{},"children":[["$","div",null,{"className":"PageHero-module__aE6RSq__page-hero-media-wrapper","children":["$","img",null,{"src":"https://images.unsplash.com/photo-1616422285623-13ff0162193c?q=80&w=731&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D","alt":"Page Header","className":"PageHero-module__aE6RSq__page-hero-media","loading":"eager"}]}],["$","div",null,{"className":"PageHero-module__aE6RSq__page-hero-overlay"}],["$","div",null,{"className":"PageHero-module__aE6RSq__page-hero-content","children":[["$","span",null,{"className":"PageHero-module__aE6RSq__page-hero-subtitle","children":"PREMIUM CARE"}],["$","h1",null,{"className":"PageHero-module__aE6RSq__page-hero-title","children":"SERVICES"}]]}]]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/6f7ad9061235b974.css","precedence":"next"}]],["$","$L2",null,{"children":["$","$3",null,{"name":"Next.MetadataOutlet","children":"$@4"}]}]]}],"loading":null,"isPartial":false}
-4:null
