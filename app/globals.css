@@ -1,16 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-
-/* Custom Font: Akira Expanded */
+/* 
+   CUSTOM FONT LOADING
+   Ensure the file exists at: public/fonts/AkiraExpanded-SuperBold.otf
+*/
 @font-face {
   font-family: 'Akira Expanded';
-  /* 
-     IMPORTANT: This path must correspond to public/fonts/AkiraExpanded-SuperBold.otf 
-     Do not change this path.
-  */
-  src: url('/public/fonts/Akira.otf') format('opentype');
+  src: url('/fonts/AkiraExpanded-SuperBold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
-  font-display: swap; /* Fixes invisible text while loading */
+  font-display: swap;
 }
 
 :root {
@@ -22,13 +23,7 @@
   
   /* Fonts */
   --font-akira: 'Akira Expanded', sans-serif;
-  --font-montserrat: var(--font-montserrat), sans-serif;
-
-  /* Navbar Variables */
-  --nav-accent: #D12027;
-  --nav-font-primary: 'Akira Expanded', sans-serif;
-  --nav-ease: cubic-bezier(0.65, 0, 0.35, 1);
-  --nav-z-index: 100;
+  /* Montserrat is injected via Next.js Font in layout.tsx */
 }
 
 /* Reset & Base Styles */
@@ -49,14 +44,15 @@ body {
   min-height: 100vh;
   background-color: var(--auto-white);
   color: var(--auto-black);
-  font-family: var(--font-montserrat);
+  /* Apply fonts globally */
+  font-family: var(--font-montserrat), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.5;
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  overflow-x: hidden;
 }
 
-/* Global Typography */
+/* Global Headings force Akira */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-akira);
   font-weight: 700;

@@ -10,10 +10,14 @@ const montserrat = Montserrat({
   variable: '--font-montserrat',
   display: 'swap',
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  adjustFontFallback: false,
 });
 
 export const viewport: Viewport = {
   themeColor: '#ffffff',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 export const metadata: Metadata = {
@@ -24,15 +28,9 @@ export const metadata: Metadata = {
   description: 'Precision. Performance. Perfection. The future of automotive engineering.',
   applicationName: 'Auto Evolution Workshop',
   icons: {
-    // Next.js automatically looks in public/ for these paths
     icon: '/resources/favicon.png', 
     shortcut: '/resources/favicon.png',
     apple: '/resources/favicon.png',
-  },
-  manifest: '/resources/favicon/site.webmanifest',
-  other: {
-    'msapplication-TileColor': '#ffc40d',
-    'apple-mobile-web-app-title': 'Auto Evolution',
   },
 };
 
@@ -42,19 +40,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={montserrat.variable}>
       <head>
-        {/* Remix Icons - Keeping CDN for icons as requested */}
         <link
+          href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
           rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css"
         />
       </head>
-      {/* 
-          Akira Expanded is loaded via @font-face in globals.css 
-          Montserrat is loaded via next/font class/variable here
-      */}
-      <body className={`${montserrat.variable} font-sans`}>
+      <body className="font-sans antialiased min-h-screen bg-[#f7f7f5] text-[#121212]">
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>

@@ -1,0 +1,1 @@
+// This file is intentionally left empty to prevent conflicts with Next.js App Router.

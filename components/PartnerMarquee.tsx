@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useLayoutEffect, useRef } from 'react';
@@ -17,13 +16,9 @@ interface PartnerMarqueeProps {
   partners: Partner[];
   title?: string;
   showUnderline?: boolean;
-  /** Duration of one full loop in seconds. Default: 20 */
   speed?: number;
-  /** Gap between items. Default: '4rem' */
   gap?: string;
-  /** Height of the logo items. Default: '80px' */
   height?: string;
-  /** Vertical padding of the section. Default: '4rem 0' */
   padding?: string;
   className?: string;
 }
@@ -41,12 +36,16 @@ export const PartnerMarquee: React.FC<PartnerMarqueeProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
 
-  // We duplicate the partners list to create the seamless loop effect.
-  // [Set 1] [Set 2 (Clone)]
-  const baseList = [...partners, ...partners]; 
-  const renderList = [...baseList, ...baseList]; // Double again for smoother seamless logic on wide screens
+  // Duplicate for seamless loop
+  const renderList = [...partners, ...partners, ...partners, ...partners]; 
 
   const renderPartner = (p: Partner, index: number) => {
+    // Fallback: If logo fails to load or isn't provided, show text
+    const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+      e.currentTarget.style.display = 'none';
+      // Try to find a sibling text element to show, or just let it hide
+    };
+
     const content = (
       <>
         {p.logo ? (
@@ -54,8 +53,8 @@ export const PartnerMarquee: React.FC<PartnerMarqueeProps> = ({
             src={p.logo} 
             alt={`${p.name} Logo`} 
             className="pm-partner-logo"
-            // Important: prevent dragging to not interfere with scroll events
             draggable={false}
+            onError={handleImageError}
             style={{ 
               width: p.customWidth ? p.customWidth : 'auto',
               maxHeight: '100%' 
@@ -71,30 +70,17 @@ export const PartnerMarquee: React.FC<PartnerMarqueeProps> = ({
     );
 
     const key = `partner-${index}-${p.name}`;
-    
-    // Wrapper style for individual items
     const itemStyle = { height };
 
     if (p.href) {
       return (
-        <a 
-          key={key} 
-          href={p.href} 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          className="pm-partner-item"
-          style={itemStyle}
-        >
+        <a key={key} href={p.href} target="_blank" rel="noopener noreferrer" className="pm-partner-item" style={itemStyle}>
           {content}
         </a>
       );
     }
     return (
-      <div 
-        key={key} 
-        className="pm-partner-item"
-        style={itemStyle}
-      >
+      <div key={key} className="pm-partner-item" style={itemStyle}>
         {content}
       </div>
     );
@@ -105,44 +91,31 @@ export const PartnerMarquee: React.FC<PartnerMarqueeProps> = ({
     if (!track) return;
 
     const ctx = gsap.context(() => {
-      // 1. Setup the Infinite Animation
-      // We animate x from 0 to -50% (because the track contains exactly 2 copies of the base list logic)
+      // Calculate seamless scroll based on total width roughly
       gsap.to(track, { 
         xPercent: -50, 
         duration: speed, 
         ease: "none",
         repeat: -1
       });
-
     }, containerRef);
 
     return () => ctx.revert();
-  }, [partners, speed]); 
+  }, [speed]); 
 
   return (
-    <section 
-      className={`pm-section ${className}`} 
-      ref={containerRef}
-      style={{ padding }}
-    >
-      
+    <section className={`pm-section ${className}`} ref={containerRef} style={{ padding }}>
       {title && (
         <div className="pm-header">
           <h3 className="pm-title">{title}</h3>
           {showUnderline && <div className="pm-line"></div>}
         </div>
       )}
-      
       <div className="pm-marquee-wrapper">
-        <div 
-          className="pm-track" 
-          ref={trackRef}
-          style={{ gap }}
-        >
+        <div className="pm-track" ref={trackRef} style={{ gap }}>
           {renderList.map((p, i) => renderPartner(p, i))}
         </div>
       </div>
-
     </section>
   );
 };
