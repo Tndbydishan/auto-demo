@@ -5,11 +5,14 @@
 /* Custom Font: Akira Expanded */
 @font-face {
   font-family: 'Akira Expanded';
-  /* Path must be relative to the public folder (start with /) */
+  /* 
+     IMPORTANT: This path must correspond to public/fonts/AkiraExpanded-SuperBold.otf 
+     Do not change this path.
+  */
   src: url('/fonts/AkiraExpanded-SuperBold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
-  font-display: block; 
+  font-display: swap; /* Fixes invisible text while loading */
 }
 
 :root {
@@ -21,7 +24,6 @@
   
   /* Fonts */
   --font-akira: 'Akira Expanded', sans-serif;
-  /* Montserrat is injected via layout.tsx variable */
   --font-montserrat: var(--font-montserrat), sans-serif;
 
   /* Navbar Variables */
@@ -53,8 +55,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.5;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
+/* Global Typography */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-akira);
   font-weight: 700;
@@ -83,7 +87,7 @@ ul, ol {
   padding: 0;
 }
 
-/* Scrollbar */
+/* Custom Scrollbar */
 @media (min-width: 1440px) {
   ::-webkit-scrollbar {
     width: 10px;
