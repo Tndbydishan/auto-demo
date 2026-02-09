@@ -17,7 +17,7 @@ const nextConfig = {
       }
     ],
     // If you are on a free plan with limits, unoptimized allows unlimited standard images
-    unoptimized: false, 
+    unoptimized: true, 
   },
 
   // Fix for potential font loading CORS issues
