@@ -1,0 +1,294 @@
+/* 
+ * Nav Navbar Styles
+ */
+
+:root {
+  --nav-accent: #D12027;
+  --nav-font-primary: "Akira Expanded", sans-serif;
+  --nav-ease: cubic-bezier(0.65, 0, 0.35, 1);
+  --nav-z-index: 100;
+}
+
+/* Animations */
+@keyframes navSlideDown {
+  from { transform: translate(-50%, -120%); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+/* =========================================
+   DESKTOP NAVBAR
+========================================= */
+.nav-navbar {
+  position: fixed;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--nav-z-index);
+  width: 90%;
+  max-width: 880px;
+  height: 50px;
+  border-radius: 9999px;
+  /* Glass Background */
+  background-color: rgba(129, 129, 129, 0.205);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(53, 53, 53, 0.151);
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2rem;
+  transition: all 0.3s ease;
+  animation: navSlideDown 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.05);
+}
+
+/* Menu List */
+.nav-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.nav-item {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* NAV LINK - MIX BLEND APPLIED HERE */
+.nav-link {
+  font-family: var(--nav-font-primary);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+  text-decoration: none;
+  position: relative;
+  padding: 0.25rem 0;
+  transition: color 0.3s ease;
+  color: #121212;
+}
+
+.nav-link.active {
+  /* Active state remains difference but slightly accented if needed, or keeping it uniform */
+  color: #d12027 !important; 
+}
+
+/* Underline Hover Effect */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background-color: #121212;
+  mix-blend-mode: difference;
+  transition: width 0.3s ease-out;
+}
+
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-item:hover .nav-link:not(.active)::after {
+  width: 100%;
+  background-color: #D12027; /* Red underline on hover */
+}
+
+@media (min-width: 1440px) and (max-width: 1550px) {
+  .nav-navbar {
+    max-width: 780px;
+    gap: 1.8rem;
+  }
+  .nav-list {
+    gap: 1.8rem;
+  }
+  .nav-link {
+    font-size: 11.5px;
+  }
+}
+
+/* =========================================
+   HAMBURGER MENU
+========================================= */
+.nav-hamburger {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 102;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.1s;
+  
+  /* CRITICAL: Difference mode applied to container to handle all child icons */
+  mix-blend-mode: difference;
+  color: #ffffff;
+}
+
+.nav-hamburger:active {
+  transform: scale(0.95);
+}
+
+.nav-icon {
+  font-size: 30px;
+  position: absolute;
+  transition: all 0.8s var(--nav-ease);
+  color: currentColor; /* Inherit color from parent */
+}
+
+.nav-icon-open.hidden { opacity: 0; transform: rotate(180deg) scale(0.5); }
+.nav-icon-close.hidden { opacity: 0; transform: rotate(-180deg) scale(0.5); }
+.nav-icon-open.visible { opacity: 1; transform: rotate(0) scale(1); }
+.nav-icon-close.visible { opacity: 1; transform: rotate(0) scale(1); }
+
+@media (max-width: 1030px) and (min-width: 768px) {
+  .nav-hamburger {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .nav-icon {
+    font-size: 32px;
+  }
+}
+
+/* =========================================
+   MOBILE OVERLAY
+========================================= */
+.nav-mobile-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 101;
+  background-color: #f1f1f1;
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(24px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s var(--nav-ease);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #121212;
+}
+
+.nav-mobile-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.nav-mobile-content-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.nav-mobile-menu-container {
+  width: 100%;
+  padding: 0 2rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.5s var(--nav-ease), opacity 0.5s var(--nav-ease);
+}
+
+.nav-mobile-menu-container.shifted {
+  transform: translate(-30%, -50%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav-mobile-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-mobile-anim-item {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s var(--nav-ease);
+}
+
+.nav-mobile-overlay.open .nav-mobile-anim-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nav-mobile-link-btn,
+.nav-mobile-link {
+  font-family: var(--nav-font-primary);
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: bold;
+  color: #121212;
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: color 0.3s;
+}
+
+@media (min-width: 768px) {
+  .nav-mobile-link-btn,
+  .nav-mobile-link {
+    font-size: 36px;
+  }
+}
+
+.nav-mobile-link:hover,
+.nav-mobile-link-btn:hover {
+  opacity: 1;
+  color: #D12027;
+}
+
+.nav-mobile-link.active,
+.nav-mobile-link-btn.active {
+  color: #D12027;
+}
+
+.nav-mobile-inquire {
+  background-color: #D12027;
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 9999px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #D12027;
+  font-family: var(--nav-font-primary);
+  transition: transform 0.1s;
+}
+
+.nav-mobile-inquire:active {
+  transform: scale(0.95);
+}

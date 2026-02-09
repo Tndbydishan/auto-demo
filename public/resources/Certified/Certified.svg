@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 223.76 65.24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #00257d;
+      }
+
+      .cls-2 {
+        font-size: 21.49px;
+      }
+
+      .cls-2, .cls-3 {
+        font-family: Montserrat-Medium, Montserrat;
+        font-variation-settings: 'wght' 500;
+        font-weight: 500;
+      }
+
+      .cls-4 {
+        letter-spacing: .1em;
+      }
+
+      .cls-5 {
+        letter-spacing: .15em;
+      }
+
+      .cls-6 {
+        fill: #f7f7f5;
+        font-family: AkiraExpanded-Bold, 'Akira Expanded';
+        font-size: 13.84px;
+        font-weight: 700;
+      }
+
+      .cls-7 {
+        letter-spacing: .17em;
+      }
+
+      .cls-8 {
+        letter-spacing: .2em;
+      }
+
+      .cls-9 {
+        letter-spacing: .17em;
+      }
+
+      .cls-10 {
+        letter-spacing: .14em;
+      }
+
+      .cls-11 {
+        letter-spacing: .15em;
+      }
+
+      .cls-3 {
+        font-size: 15.83px;
+      }
+
+      .cls-12 {
+        letter-spacing: .17em;
+      }
+    </style>
+  </defs>
+  <g>
+    <rect class="cls-1" width="65.25" height="65.24"/>
+    <text class="cls-6" transform="translate(12.21 36.74)"><tspan class="cls-8" x="0" y="0">e</tspan><tspan class="cls-11" x="14.3" y="0">d</tspan><tspan class="cls-4" x="29.57" y="0">u</tspan></text>
+  </g>
+  <g>
+    <text class="cls-2" transform="translate(81.11 30.46)"><tspan class="cls-5" x="0" y="0">CE</tspan><tspan class="cls-10" x="36.17" y="0">R</tspan><tspan class="cls-5" x="54.8" y="0">TIFIED</tspan></text>
+    <text class="cls-3" transform="translate(82.83 51.53)"><tspan class="cls-7" x="0" y="0">T</tspan><tspan class="cls-9" x="11.99" y="0">E</tspan><tspan class="cls-12" x="25.27" y="0">CHNICIANS</tspan></text>
+  </g>
+</svg>
