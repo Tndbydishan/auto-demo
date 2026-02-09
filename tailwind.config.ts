@@ -1,4 +1,18 @@
-// Deprecated: See tailwind.config.js
 import type { Config } from 'tailwindcss';
-const config: Config = { content: [], theme: {}, plugins: [] };
+
+const config: Config = {
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['var(--font-montserrat)', 'sans-serif'],
+        display: ['"Akira Expanded"', 'sans-serif'],
+      },
+    },
+  },
+  plugins: [],
+};
 export default config;
