@@ -1,0 +1,21 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/about/page": "/about",
+  "/blogs/page": "/blogs",
+  "/booking/page": "/booking",
+  "/careers/page": "/careers",
+  "/community/page": "/community",
+  "/contact/page": "/contact",
+  "/faq/page": "/faq",
+  "/page": "/",
+  "/partnership/page": "/partnership",
+  "/privacy-policy/page": "/privacy-policy",
+  "/safety/page": "/safety",
+  "/services/page": "/services",
+  "/sitemap/page": "/sitemap",
+  "/support/page": "/support",
+  "/sustainability/page": "/sustainability",
+  "/terms-of-service/page": "/terms-of-service",
+  "/training/page": "/training"
+}

@@ -15,7 +15,7 @@ export const metadata = {
 const PARTNERS = [
   { 
     name: '', 
-    logo: '/resources/Certified/Oem.svg',
+    logo: '/resources/Certified/Oem.png',
     customWidth: '150px'
   },
     { 
