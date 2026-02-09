@@ -4,14 +4,19 @@
 
 /* 
    CUSTOM FONT LOADING
-   Ensure the file exists at: public/fonts/AkiraExpanded-SuperBold.otf
+   Using online source for Akira Expanded
 */
 @font-face {
-  font-family: 'Akira Expanded';
-  src: url('/fonts/AkiraExpanded-SuperBold.otf') format('opentype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
+    font-family: "Akira Expanded";
+    src: url("https://db.onlinewebfonts.com/t/6fa591daa0aa2d0f845653486954aca5.eot");
+    src: url("https://db.onlinewebfonts.com/t/6fa591daa0aa2d0f845653486954aca5.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/6fa591daa0aa2d0f845653486954aca5.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/6fa591daa0aa2d0f845653486954aca5.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/6fa591daa0aa2d0f845653486954aca5.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/6fa591daa0aa2d0f845653486954aca5.svg#Akira Expanded")format("svg");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
 }
 
 :root {
