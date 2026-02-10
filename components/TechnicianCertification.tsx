@@ -20,18 +20,22 @@ export const TechnicianCertification: React.FC = () => {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       
-      // --- 1. Parallax Watermark (Scrub) ---
+      // --- 1. Parallax Watermark (Calculated Symmetric Centering) ---
+      // Moves from -150 to +150 relative to center.
       if (watermarkRef.current) {
+        // Fix: Use GSAP for centering to avoid CSS Transform conflicts
+        gsap.set(watermarkRef.current, { xPercent: -50, yPercent: -50 });
+
         gsap.fromTo(watermarkRef.current, 
-          { y: -50 },
+          { y: -150 }, // Symmetric start
           { 
-            y: 100, 
+            y: 150,    // Symmetric end
             ease: "none",
             scrollTrigger: {
               trigger: sectionRef.current,
               start: "top bottom",
               end: "bottom top",
-              scrub: 1.5
+              scrub: 1 // Smooth scrub
             }
           }
         );

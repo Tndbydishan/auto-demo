@@ -6,11 +6,11 @@
 
 .qa-section {
   width: 100%;
-  background-color: #f7f7f5; /* Crisp white to differentiate from grey neighbours */
+  background-color: #f7f7f5;
   color: #121212;
   position: relative;
   overflow: hidden;
-  padding: 6rem 0;
+  padding: 4rem 0;
   border-top: 1px solid rgba(0,0,0,0.05);
   border-bottom: 1px solid rgba(0,0,0,0.05);
 }
@@ -21,19 +21,37 @@
   }
 }
 
-/* Watermark */
+/* Watermark - Centered via GSAP */
 .qa-watermark {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  /* Transform removed here to be handled by GSAP xPercent/yPercent for smoother execution */
   font-family: "Akira Expanded", sans-serif;
-  font-size: 18vw;
+  
+  /* Responsive Visibility */
+  font-size: 28vw; /* Prominent on small screens */
+  width: 100%;
+  text-align: center;
+  
   color: rgba(0, 0, 0, 0.03);
   z-index: 0;
   white-space: nowrap;
   pointer-events: none;
   user-select: none;
+  will-change: transform;
+}
+
+@media (min-width: 768px) {
+  .qa-watermark { font-size: 18vw; }
+}
+
+@media (min-width: 1600px) {
+  .qa-watermark { font-size: 18vw; }
+}
+
+@media (min-width: 2560px) {
+  .qa-watermark { font-size: 20vw; } /* Fixed massive size for 4K */
 }
 
 .qa-container {
@@ -44,19 +62,11 @@
   z-index: 2;
 }
 
-
-
-@media (min-width: 1024px) {
-  .qa-bg-line {
-    display: block;
-  }
-}
-
 /* Main Grid */
 .qa-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 4rem;
+  gap: 3rem; /* Reduced gap for mobile */
   align-items: start;
 }
 
@@ -84,7 +94,7 @@
 
 .qa-label {
   font-family: var(--font-montserrat), sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: #6b7280;
@@ -105,12 +115,15 @@
 /* Main Visual SVG 1 */
 .qa-main-logo {
   width: 100%;
-  max-width: 380px;
+  max-width: 280px; /* Smaller for mobile 320px */
   height: auto;
   margin-bottom: 2rem;
-  /* Filter for sleek monochrome initial state */
   filter: drop-shadow(0 10px 20px rgba(0,0,0,0.05));
   transition: transform 0.5s ease;
+}
+
+@media (min-width: 768px) {
+  .qa-main-logo { max-width: 380px; }
 }
 
 .qa-main-logo:hover {
@@ -119,7 +132,7 @@
 
 .qa-headline {
   font-family: "Akira Expanded", sans-serif;
-  font-size: 2rem;
+  font-size: 1.6rem; /* Safe for 320px */
   color: #121212;
   line-height: 1.1;
   text-transform: uppercase;
@@ -127,10 +140,16 @@
   margin-bottom: 1.5rem;
 }
 
+@media (min-width: 375px) {
+  .qa-headline { font-size: 1.85rem; }
+}
+
 @media (min-width: 768px) {
-  .qa-headline {
-    font-size: 2.75rem;
-  }
+  .qa-headline { font-size: 2.75rem; }
+}
+
+@media (min-width: 2560px) {
+  .qa-headline { font-size: 4rem; }
 }
 
 .qa-headline span {
@@ -139,10 +158,14 @@
 
 .qa-description {
   font-family: var(--font-montserrat), sans-serif;
-  font-size: 1rem;
-  line-height: 1.7;
+  font-size: 0.9rem;
+  line-height: 1.6;
   color: #4b5563;
   max-width: 450px;
+}
+
+@media (min-width: 2560px) {
+  .qa-description { font-size: 1.25rem; max-width: 600px; }
 }
 
 /* --- Right Column: Pillars --- */
@@ -156,23 +179,28 @@
 .qa-features-list {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 @media (min-width: 640px) {
   .qa-features-list {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
 }
 
 .qa-card {
   background-color: #f7f7f5;
-  padding: 2rem;
+  padding: 1.5rem; 
   border-radius: 0.75rem;
   border: 1px solid rgba(0,0,0,0.03);
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
   overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .qa-card { padding: 2rem; }
 }
 
 .qa-card:hover {
@@ -184,25 +212,37 @@
 }
 
 .qa-card-icon {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #D12027;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
   display: inline-block;
+}
+
+@media (min-width: 768px) {
+  .qa-card-icon { font-size: 2rem; margin-bottom: 1.25rem; }
 }
 
 .qa-card-title {
   font-family: "Akira Expanded", sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #121212;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
   letter-spacing: 0.02em;
+}
+
+@media (min-width: 768px) {
+  .qa-card-title { font-size: 0.9rem; margin-bottom: 0.75rem; }
 }
 
 .qa-card-text {
   font-family: var(--font-montserrat), sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #6b7280;
-  line-height: 1.6;
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .qa-card-text { font-size: 0.85rem; line-height: 1.6; }
 }
 
 /* Secondary Stamp (SVG 2) */
@@ -217,13 +257,15 @@
 .qa-stamp-container {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
   opacity: 0.8;
+  flex-wrap: wrap; 
+  justify-content: flex-end;
 }
 
 .qa-stamp-label {
   font-family: var(--font-montserrat), sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   text-align: right;
   color: #9ca3af;
   font-weight: 600;
@@ -234,18 +276,18 @@
 }
 
 .qa-secondary-logo {
-  width: 220px;
+  width: 160px; /* Safe for 320px */
   height: auto;
   filter: grayscale(100%);
   transition: filter 0.4s ease;
 }
 
-.qa-secondary-logo:hover {
-  filter: grayscale(0%);
+@media (min-width: 768px) {
+  .qa-secondary-logo { width: 280px; }
+  .qa-stamp-label { font-size: 0.75rem; }
+  .qa-stamp-container { gap: 1.5rem; }
 }
 
-@media (min-width: 768px) {
-  .qa-secondary-logo {
-    width: 280px;
-  }
+.qa-secondary-logo:hover {
+  filter: grayscale(0%);
 }

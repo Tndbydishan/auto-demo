@@ -20,10 +20,16 @@ export const QualityAssurance: React.FC = () => {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       
-      // --- Watermark Parallax ---
+      // --- Watermark Parallax (Calculated Symmetric Centering) ---
       if (watermarkRef.current) {
+        // 1. Establish the center point using percentages.
+        // This replaces "transform: translate(-50%, -50%)" in CSS to avoid conflicts.
+        gsap.set(watermarkRef.current, { xPercent: -50, yPercent: -50 });
+
+        // 2. Animate Y offset symmetrically around that center.
+        // GSAP handles yPercent and y separately, so they stack perfectly.
         gsap.fromTo(watermarkRef.current, 
-          { y: -50 },
+          { y: -120 }, 
           { 
             y: 100, 
             ease: "none",
@@ -31,7 +37,7 @@ export const QualityAssurance: React.FC = () => {
               trigger: sectionRef.current,
               start: "top bottom",
               end: "bottom top",
-              scrub: 1.5
+              scrub: 1 // Smooth scrubbing (1s catch-up)
             }
           }
         );

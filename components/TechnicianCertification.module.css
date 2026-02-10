@@ -7,10 +7,10 @@
 .tc-section {
   width: 100%;
   position: relative;
-  background-color: #f7f7f5; /* Crisp white to contrast slightly with BoldStatement's grey */
+  background-color: #f7f7f5;
   overflow: hidden;
-  padding: 6rem 0;
-  margin: 4rem 0;
+  padding: 4rem 0; /* Reduced padding for mobile */
+  margin: 3rem 0;
 }
 
 @media (min-width: 768px) {
@@ -20,19 +20,37 @@
   }
 }
 
-/* Watermark */
+/* Watermark - Centered & Calculated */
 .tc-watermark {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  /* Transform removed to avoid conflict with GSAP parallax positioning */
   font-family: "Akira Expanded", sans-serif;
-  font-size: 18vw;
+  
+  /* Responsive Visibility */
+  font-size: 28vw; /* Large for mobile */
+  width: 100%;
+  text-align: center;
+  
   color: rgba(0, 0, 0, 0.04);
   z-index: 0;
   white-space: nowrap;
   pointer-events: none;
   user-select: none;
+  will-change: transform;
+}
+
+@media (min-width: 768px) {
+  .tc-watermark { font-size: 18vw; }
+}
+
+@media (min-width: 1600px) {
+  .tc-watermark { font-size: 15vw; }
+}
+
+@media (min-width: 2560px) {
+  .tc-watermark { font-size: 30rem; } /* Scaled for 4K */
 }
 
 /* Container */
@@ -48,14 +66,9 @@
 .tc-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 6rem;
+  gap: 3rem; /* Reduced gap for mobile */
 }
 
-/* 
- * 1024px Layout Fix:
- * Switched to padding-based spacing to create a proper full-height separator line.
- * Removed 'gap' to allow border to sit exactly in the middle of content visual spacing.
- */
 @media (min-width: 1024px) {
   .tc-grid {
     grid-template-columns: 0.9fr 1.1fr; /* Balanced split */
@@ -97,15 +110,19 @@
 
 .tc-logo-wrapper {
   width: 100%;
-  max-width: 320px;
-  margin-bottom: 3rem;
+  max-width: 260px; /* Safe for 320px screens */
+  margin-bottom: 2rem;
   filter: drop-shadow(0 20px 40px rgba(0, 37, 125, 0.1));
   will-change: transform, opacity;
 }
 
+@media (min-width: 480px) {
+  .tc-logo-wrapper { max-width: 320px; }
+}
+
 @media (min-width: 1024px) {
   .tc-logo-wrapper {
-    margin-bottom: 0; /* Reset for desktop vertical alignment */
+    margin-bottom: 0;
   }
 }
 
@@ -124,23 +141,23 @@
 .tc-floating-stat {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
   background: #ffffff;
   border: 1px solid #e5e7eb;
-  padding: 1rem 1.5rem;
+  padding: 0.8rem 1.2rem;
   border-radius: 999px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
   will-change: transform;
-  
-  /* Positioning relative to visual col on mobile, absolute on desktop */
 }
 
 @media (min-width: 1024px) {
   .tc-floating-stat {
     position: absolute;
     bottom: 10%;
-    right: 2rem; /* Overlapping the separator slightly or close to it */
+    right: 2rem; 
     z-index: 10;
+    padding: 1rem 1.5rem;
+    gap: 1rem;
   }
 }
 
@@ -152,8 +169,12 @@
 }
 
 .tc-stat-icon {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: #00257d; 
+}
+
+@media (min-width: 768px) {
+  .tc-stat-icon { font-size: 1.5rem; }
 }
 
 @media (min-width: 2560px) {
@@ -168,12 +189,16 @@
 
 .tc-stat-label {
   font-family: var(--font-montserrat), sans-serif;
-  font-size: 0.6rem;
+  font-size: 0.55rem;
   text-transform: uppercase;
   color: #6b7280;
   font-weight: 700;
   letter-spacing: 0.1em;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
+}
+
+@media (min-width: 768px) {
+  .tc-stat-label { font-size: 0.6rem; margin-bottom: 4px; }
 }
 
 @media (min-width: 2560px) {
@@ -183,8 +208,12 @@
 .tc-stat-value {
   font-family: "Akira Expanded", sans-serif;
   letter-spacing: 1px;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: #121212;
+}
+
+@media (min-width: 768px) {
+  .tc-stat-value { font-size: 0.8rem; }
 }
 
 @media (min-width: 2560px) {
@@ -213,7 +242,7 @@
 .tc-content-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 1.7rem;
+  gap: 1.5rem;
 }
 
 /* Header Group */
@@ -225,11 +254,11 @@
 
 .tc-pre-title {
   font-family: var(--font-montserrat), sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: #D12027; 
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -238,9 +267,14 @@
 
 .tc-pre-title::before {
   content: '';
-  width: 2rem;
+  width: 1.5rem;
   height: 2px;
   background-color: #D12027;
+}
+
+@media (min-width: 768px) {
+  .tc-pre-title { font-size: 0.75rem; margin-bottom: 1rem; }
+  .tc-pre-title::before { width: 2rem; }
 }
 
 @media (min-width: 2560px) {
@@ -249,46 +283,36 @@
 
 .tc-headline {
   font-family: "Akira Expanded", sans-serif;
-  font-size: 1.8rem;
+  font-size: 1.6rem; /* Mobile 320px safe */
   color: #121212;
   line-height: 1.1;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.05rem;
   text-transform: uppercase;
   font-weight: 800;
 }
 
+@media (min-width: 375px) {
+  .tc-headline { font-size: 1.8rem; letter-spacing: 0.1rem; }
+}
+
 @media (min-width: 480px) {
-  .tc-headline { 
-    font-size: 2.5rem;
-    letter-spacing: 0.15rem;
-  }
+  .tc-headline { font-size: 2.5rem; letter-spacing: 0.15rem; }
 }
 
 @media (min-width: 768px) {
-  .tc-headline { 
-    font-size: 3.5rem; 
-    letter-spacing: 0.2rem;
-  }
+  .tc-headline { font-size: 3.5rem; letter-spacing: 0.2rem; }
 }
 
 @media (min-width: 1024px) {
-  .tc-headline { 
-    font-size: 3.25rem; /* Tuned for 1024px */
-  }
+  .tc-headline { font-size: 3.25rem; }
 }
 
 @media (min-width: 1440px) {
-  .tc-headline { 
-    font-size: 4.5rem; 
-    letter-spacing: 0.25rem;
-  }
+  .tc-headline { font-size: 4.5rem; letter-spacing: 0.25rem; }
 }
 
 @media (min-width: 2560px) {
-  .tc-headline { 
-    font-size: 6.5rem; 
-    letter-spacing: 0.35rem;
-  }
+  .tc-headline { font-size: 6.5rem; letter-spacing: 0.35rem; }
 }
 
 .tc-highlight {
@@ -298,29 +322,22 @@
 /* Description */
 .tc-description {
   font-family: var(--font-montserrat), sans-serif;
-  font-size: 1rem;
-  line-height: 1.7;
+  font-size: 0.9rem;
+  line-height: 1.6;
   color: #4b5563;
   max-width: 600px;
 }
 
 @media (min-width: 768px) {
-  .tc-description { font-size: 1.125rem; }
+  .tc-description { font-size: 1.125rem; line-height: 1.7; }
 }
 
 @media (min-width: 1440px) {
-  .tc-description { 
-    font-size: 1.25rem; 
-    max-width: 750px; 
-  }
+  .tc-description { font-size: 1.25rem; max-width: 750px; }
 }
 
 @media (min-width: 2560px) {
-  .tc-description { 
-    font-size: 1.6rem; 
-    max-width: 1200px; 
-    line-height: 1.6;
-  }
+  .tc-description { font-size: 1.6rem; max-width: 1200px; line-height: 1.6; }
 }
 
 .tc-description strong {
@@ -332,8 +349,12 @@
 .tc-specs-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
-  perspective: 1000px; /* Essential for smooth 3D reveals */
+  gap: 1rem;
+  perspective: 1000px;
+}
+
+@media (min-width: 768px) {
+  .tc-specs-list { gap: 1.5rem; }
 }
 
 @media (min-width: 1440px) {
@@ -343,14 +364,18 @@
 .tc-spec-card {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
   background-color: #f7f7f5;
   border: 1px solid rgba(0,0,0,0.05);
-  padding: 0.75rem 1.5rem;
+  padding: 0.6rem 1rem;
   border-radius: 8px;
   transition: all 0.3s ease;
-  will-change: transform, opacity; /* Performance optimization */
+  will-change: transform, opacity;
   transform-style: preserve-3d;
+}
+
+@media (min-width: 768px) {
+  .tc-spec-card { padding: 0.75rem 1.5rem; gap: 1rem; }
 }
 
 .tc-spec-card:hover {
@@ -365,8 +390,12 @@
 }
 
 .tc-spec-card i {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #00257d;
+}
+
+@media (min-width: 768px) {
+  .tc-spec-card i { font-size: 1.2rem; }
 }
 
 @media (min-width: 2560px) {
@@ -380,10 +409,14 @@
 
 .tc-spec-info h4 {
   font-family: "Akira Expanded", sans-serif;
-  font-size: 0.7rem;
-  letter-spacing: 0.07rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.05rem;
   color: #121212;
   margin: 0 0 2px 0;
+}
+
+@media (min-width: 768px) {
+  .tc-spec-info h4 { font-size: 0.7rem; letter-spacing: 0.07rem; }
 }
 
 @media (min-width: 2560px) {
@@ -392,9 +425,13 @@
 
 .tc-spec-info span {
   font-family: var(--font-montserrat), sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   color: #6b7280;
   font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .tc-spec-info span { font-size: 0.75rem; }
 }
 
 @media (min-width: 2560px) {
@@ -403,15 +440,15 @@
 
 /* Link */
 .tc-cta-row {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 .tc-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
   font-family: var(--font-montserrat), sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: #D12027;
   text-transform: uppercase;
@@ -420,6 +457,10 @@
   transition: all 0.3s ease;
   border-bottom: 2px solid transparent;
   padding-bottom: 2px;
+}
+
+@media (min-width: 768px) {
+  .tc-link { font-size: 0.85rem; gap: 0.75rem; }
 }
 
 .tc-link:hover {

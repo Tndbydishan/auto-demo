@@ -12,47 +12,57 @@ export const metadata = {
   description: 'Industry leading automotive service center.',
 };
 
+// Cloudinary Configuration
+// Ensure images are uploaded to your Cloudinary 'training-partners' folder
+const CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'autoevolution';
+const BASE_URL = `https://res.cloudinary.com/${CLOUD_NAME}/image/upload`;
+
+
 const PARTNERS = [
-  { 
-    name: '', 
-    logo: '/resources/Certified/Oem.svg',
-    customWidth: '150px'
-  },
-    { 
-    name: '', 
-    logo: '/resources/Certified/Certified.svg',
-    customWidth: '130px'
+   { 
+    name: 'Quality', 
+    logo: `${BASE_URL}/v1770640526/quality_aegg0h.png`, 
+    customWidth: '140px' 
   },
   { 
-    name: '', 
-    logo: '/resources/Certified/Quality.svg',
-    customWidth: '140px'
+    name: 'OEM', 
+    logo: `${BASE_URL}/v1770640525/Oem_wnus5b.png`, 
+    customWidth: '140px' 
   },
   { 
-    name: '', 
-    logo: '/resources/Certified/Oem.svg',
-    customWidth: '130px'
+    name: 'Certified', 
+    logo: `${BASE_URL}/v1770640525/Certified_mdc2jf.png`, 
+    customWidth: '130px' 
+  },
+     { 
+    name: 'Quality', 
+    logo: `${BASE_URL}/v1770640526/quality_aegg0h.png`, 
+    customWidth: '140px' 
   },
   { 
-    name: '', 
-    logo: '/resources/Certified/Certified.svg',
-    customWidth: '150px'
-  },
-    { 
-    name: '', 
-    logo: '/resources/Certified/Quality.svg',
-    customWidth: '140px'
+    name: 'OEM', 
+    logo: `${BASE_URL}/v1770640525/Oem_wnus5b.png`, 
+    customWidth: '140px' 
   },
   { 
-    name: '', 
-    logo: '/resources/Certified/Oem.svg',
-    customWidth: '150px'
+    name: 'Certified', 
+    logo: `${BASE_URL}/v1770640525/Certified_mdc2jf.png`, 
+    customWidth: '130px' 
   },
- 
-    { 
-    name: '', 
-    logo: '/resources/Certified/Certified.svg',
-    customWidth: '130px'
+     { 
+    name: 'Quality', 
+    logo: `${BASE_URL}/v1770640526/quality_aegg0h.png`, 
+    customWidth: '140px' 
+  },
+  { 
+    name: 'OEM', 
+    logo: `${BASE_URL}/v1770640525/Oem_wnus5b.png`, 
+    customWidth: '140px' 
+  },
+  { 
+    name: 'Certified', 
+    logo: `${BASE_URL}/v1770640525/Certified_mdc2jf.png`, 
+    customWidth: '130px' 
   },
 
 ];
@@ -81,7 +91,7 @@ export default function HomePage() {
         partners={PARTNERS} 
         title="" 
         showUnderline={false}
-        speed={35}
+        speed={65}
         gap="5rem"
         height="50px"
         padding="2rem 0"

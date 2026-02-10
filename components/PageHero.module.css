@@ -8,40 +8,41 @@
   position: relative;
   
   /* FLOATING LAYOUT CONFIGURATION */
-  /* Wider Mobile Width: calc(100% - 1rem) gives 0.5rem margin on sides */
-  width: calc(100% - 1rem); 
+  /* Mobile: balanced margins */
+  width: calc(100% - 1.5rem); 
   
   /* LOWERED HERO: Creates space for fixed Navbar & Logo */
-  margin-top: 6rem; 
+  /* Mobile: Reduced top margin for tighter fit */
+  margin-top: 5.5rem; 
   margin-left: auto;
   margin-right: auto;
   
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.15);
   
   /* --- 1. MOBILE BREAKPOINT (Default < 768px) --- */
-  /* Robust height to ensure content fits comfortably on tall phones */
-  height: 60vh; 
-  min-height: 480px;
+  /* Adjusted for small screens (320px) to prevent vertical stretching */
+  height: 65vh; 
+  min-height: 400px;
+  max-height: 600px; /* Cap height on mobile so it doesn't feel endless */
   
   overflow: hidden;
   display: flex;
   align-items: flex-end;
   background-color: #121212;
-  transform: translateZ(0); /* Hardware acceleration for container */
+  transform: translateZ(0); /* Hardware acceleration */
 }
 
 /* --- 2. TABLET BREAKPOINT (>= 768px) --- */
 @media (min-width: 768px) {
   .page-hero-container {
-    /* Wider Tablet Width: calc(100% - 2rem) gives 1rem margin on sides */
-    width: calc(100% - 2rem);
-    margin-top: 7rem; /* Increased spacing for desktop header */
+    width: calc(100% - 3rem);
+    margin-top: 6.5rem; 
     border-radius: 1.25rem;
     
-    /* Balanced height for portrait tablets */
     height: 70vh; 
-    min-height: 600px;
+    min-height: 500px;
+    max-height: none; /* Remove cap */
     box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
   }
 }
@@ -49,25 +50,28 @@
 /* --- 3. DESKTOP / LAPTOP BREAKPOINT (>= 1024px) --- */
 @media (min-width: 1024px) {
   .page-hero-container {
-    /* Increased margin for desktop aesthetics */
     width: calc(100% - 4rem);
-    margin-top: 6.5rem;
+    margin-top: 7rem;
     /* Immersive height for laptops */
-    height: 85vh;
-    min-height: 720px;
+    height: 80vh;
+    min-height: 600px;
     
     max-width: 1600px; 
   }
 }
 
-/* --- 4. LARGE SCREEN BREAKPOINT (>= 1440px) --- */
+/* --- 4. LARGE SCREEN / 1440px BREAKPOINT (>= 1440px) --- */
 @media (min-width: 1440px) {
   .page-hero-container {
-    /* Full impact for large monitors */
-    margin-top: 6.5rem; 
-    height: 85vh;
-    min-height: 820px;
-    max-width: 2560px; /* Increased to support 4K layouts better */
+    margin-top: 7rem; 
+    /* 
+       Fix for 1440px laptops (often ~900px height):
+       Previously min-height 820px caused overflow.
+       Reducing min-height allows it to fit the viewport better.
+    */
+    height: 82vh;
+    min-height: 650px; 
+    max-width: 2560px; 
   }
 }
 
@@ -75,9 +79,9 @@
 @media (min-width: 2560px) {
   .page-hero-container {
     width: calc(100% - 6rem);
-    max-width: 3000px; /* Allow wider expansion on 4K */
-    height: 80vh; /* Adjust height slightly for ultra-wide aspect ratios */
-    min-height: 1000px;
+    max-width: 3400px; 
+    height: 85vh; 
+    min-height: 900px; /* Restore tall height only for huge screens */
   }
 }
 
@@ -88,7 +92,7 @@
   z-index: 1;
   width: 100%;
   height: 100%;
-  overflow: hidden; /* Ensure no scale overflow */
+  overflow: hidden; 
 }
 
 .page-hero-media {
@@ -114,8 +118,9 @@
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.1) 0%,
-    rgba(0, 0, 0, 0.15) 50%,
-    rgba(0, 0, 0, 0.7) 100%
+    rgba(0, 0, 0, 0.1) 40%,
+    rgba(0, 0, 0, 0.6) 80%,
+    rgba(0, 0, 0, 0.8) 100%
   );
   pointer-events: none;
 }
@@ -125,7 +130,8 @@
   position: relative;
   z-index: 3;
   width: 100%;
-  padding: 0 1.5rem 2.5rem 1.5rem; /* Increased mobile padding */
+  /* Mobile padding optimized for 320px width */
+  padding: 0 1.25rem 2rem 1.25rem; 
   color: #ffffff;
 }
 
@@ -137,7 +143,7 @@
 
 @media (min-width: 1024px) {
   .page-hero-content {
-    padding: 0 5rem 6rem 5rem;
+    padding: 0 5rem 5rem 5rem;
   }
 }
 
@@ -145,12 +151,12 @@
 .page-hero-subtitle {
   display: block;
   font-family: var(--font-montserrat), sans-serif;
-  font-size: 0.75rem; /* Slightly larger mobile text */
+  font-size: 0.7rem; 
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   color: #D12027;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   
   /* Animation Config */
   opacity: 0;
@@ -164,23 +170,23 @@
   .page-hero-subtitle {
     font-size: 0.875rem;
     letter-spacing: 0.2em;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1rem;
   }
 }
 
 @media (min-width: 2560px) {
   .page-hero-subtitle {
-    font-size: 1.25rem; /* Scale up for 4K */
+    font-size: 1.25rem; 
     margin-bottom: 1.5rem;
   }
 }
 
 .page-hero-title {
   font-family: var(--font-akira), sans-serif;
-  font-size: 2rem; /* Mobile Base */
+  font-size: 1.85rem; /* Better for 320px */
   font-weight: bold;
   text-transform: uppercase;
-  line-height: 0.95;
+  line-height: 1;
   margin: 0;
   letter-spacing: 0.02em;
   
@@ -192,33 +198,34 @@
   text-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
 
-@media (min-width: 480px) {
+@media (min-width: 400px) {
   .page-hero-title {
-    font-size: 2.75rem;
+    font-size: 2.25rem;
   }
 }
 
 @media (min-width: 768px) {
   .page-hero-title {
     font-size: 4rem; 
+    line-height: 0.95;
   }
 }
 
 @media (min-width: 1024px) {
   .page-hero-title {
-    font-size: 5.5rem; 
+    font-size: 5rem; 
   }
 }
 
 @media (min-width: 1440px) {
   .page-hero-title {
-    font-size: 7rem;
+    font-size: 6rem;
   }
 }
 
 @media (min-width: 2560px) {
   .page-hero-title {
-    font-size: 9rem; /* Massive title for 4K */
+    font-size: 9rem; 
     line-height: 0.9;
   }
 }
